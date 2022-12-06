@@ -1,5 +1,4 @@
 import {RiDeleteBin2Fill, RiCheckFill} from 'react-icons/ri'
-import { ReactSortable } from 'react-sortablejs'
 
 const AllTodos = ({allTodos, setAllTodos}) => {
   const completedTodo = (id) => {
@@ -31,18 +30,12 @@ const AllTodos = ({allTodos, setAllTodos}) => {
           </span>
         </div>
       }
-      <ReactSortable 
-        list={allTodos} 
-        setList={setAllTodos}  
-        animation={300}
-        delay={2}
-        delayOnTouchStart={true}
-        ghostClass="blue-background-class"
+      <ul
         className='flex flex-col space-y-4'
       >
       {allTodos?.map(todo => {
         return (
-          <div key={todo.id} className={`${todo.completed ? 'border-gray-100 bg-gray-100' : 'bg-white border-gray-300'} overflow-hidden flex justify-between p-2 items-baseline rounded border`}>
+          <li key={todo.id} className={`${todo.completed ? 'border-gray-100 bg-gray-100' : 'bg-white border-gray-300'} overflow-hidden flex justify-between p-2 items-baseline rounded border`}>
             <span className={`${todo.completed ? 'line-through text-gray-400' : ''}  overflow-hidden break-normal w-10/12`}>{todo.task}</span>
             <div className='flex items-center space-x-1'>
               <button onClick={() => completedTodo(todo.id)} className='w-6 h-6'>
@@ -52,10 +45,10 @@ const AllTodos = ({allTodos, setAllTodos}) => {
                 <RiDeleteBin2Fill className='text-red-500' />
               </button>
             </div>
-          </div>
+          </li>
         )
       })}
-      </ReactSortable>
+      </ul>
     </>
   )
 }
