@@ -10,7 +10,7 @@ const Form = ({allTodos, setAllTodos}) => {
     } else {
       setAllTodos([...allTodos, {
         id: nanoid(),
-        task: todo,
+        task: todo.toString(),
         completed: false
       }])
       setTodo('')
